@@ -6,6 +6,12 @@
 直接電波が届き通信可能である場合には,始点ノードから終点ノードへ1ホップでパケット伝達が行われる.電波が直接届かない場合にはノードを経由(マルチホップ)することで終点ノードまでパケットを伝達する.
 端末の中継機能を利用してネットワークを構成しているので,アドホックネットワークには基地局インフラが不要である.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{fig/ad-hoc.pdf}
+\caption{アドホックネットワーク}
+\end{figure}
+
 \section{AllJoyn}
 AllJoynはQualcommが開発したオープンソースプロジェクトである.デバイス間通信を実現し,製品やアプリケーション間の相互運用を可能にするデバイス通信フレームワークを提供している.
 Android,iOS,OS X,Linux,Windows7など様々なOSに対応し,Java,C++,C,JavaScriptなどの言語で使用できる.
@@ -22,9 +28,10 @@ AllJoynアプリケーションは以下の要素から成る.
 \item AllJoyn Core Library
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=15cm]{fig/AllJoyn.pdf}
+\includegraphics[width=10cm]{fig/AllJoyn.pdf}
+\caption{AllJoynアプリケーションの構成}
 \end{figure}
 
 \subsection{AllJoyn Core Library}
@@ -46,7 +53,7 @@ Base Servicesとして以下の機能がある.
 \begin{itemize}
 \item Base Services
 \begin{itemize}
-\item Onbording \\ 
+\item Onbording \\
 Wi-Fiネットワークへの接続をサポート
 \item Configuration \\
 デバイスの構成
@@ -74,6 +81,7 @@ iOS7以降のデバイス(iPhone,iPad,およびiPod touch)やAndroid4.3以降の
 iBeaconでは領域の出入りをチェックするリージョン監視やビーコンの情報を受信するレーシングを用いて位置や近接具合などを検知する.
 ビーコンを受信したときに得られる情報には以下の6つがある.
 
+
 \begin{center}
 \begin{table}[htb]
 \begin{tabular}{|l|l|}  \hline
@@ -87,6 +95,15 @@ rssi & 受信強度 \\ \hline
 \end{table}
 \end{center}
 
+\begin{itemize}
+\item proximity UUID：ビーコン識別子
+\item major：ビーコン識別子
+\item minor：ビーコン識別子
+\item proximity：ビーコンとの距離
+\item accuracy：距離の精度
+\item rssi：受信強度
+\end{itemize}
+
 また,proximityは正確な距離を表すものではなく,以下の大まかな4つの値で得ることができる.
 
 \begin{center}
@@ -99,3 +116,10 @@ Far & 遠距離 \\ \hline
 \end{tabular}
 \end{table}
 \end{center}
+
+\begin{itemize}
+\item Unknown：検出不可
+\item Immediate：至近距離
+\item Near：近距離
+\item Far：遠距離
+\end{itemize}

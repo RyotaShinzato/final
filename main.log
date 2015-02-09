@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2014) (preloaded format=platex 2015.2.9)  10 FEB 2015 02:48
+This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2014) (preloaded format=platex 2015.2.9)  10 FEB 2015 04:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -143,29 +143,31 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 
 ]
 第 2 章
-
-Overfull \hbox (46.954pt too wide) in paragraph at lines 10--13
+File: fig/ad-hoc.pdf Graphic file (type pdf)
+<fig/ad-hoc.pdf>
+Overfull \hbox (46.954pt too wide) in paragraph at lines 16--19
 \JY1/mc/m/n/12 提供している\OT1/cmr/m/n/12 . An-droid,iOS,OS X,Linux,Windows7 \
 JY1/mc/m/n/12 など様 々 な \OT1/cmr/m/n/12 OS \JY1/mc/m/n/12 に対応し\OT1/cmr/m
 /n/12 ,Java,C++,C,JavaScript
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
-(/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
+[2
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
 File: fig/AllJoyn.pdf Graphic file (type pdf)
 
 <fig/AllJoyn.pdf>
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
- [2
-
-] [3]) (./chapter3.tex [4] [5]
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 37.
+ [3] [4]) (./chapter3.tex [5]
 第 3 章
 ) (./chapter4.tex [6
 
@@ -187,12 +189,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 879 strings out of 493807
- 10924 string characters out of 6151952
- 69424 words of memory out of 5000000
- 4342 multiletter control sequences out of 15000+600000
+ 885 strings out of 493807
+ 10999 string characters out of 6151952
+ 70424 words of memory out of 5000000
+ 4347 multiletter control sequences out of 15000+600000
  15882 words of font info for 62 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 25i,7n,21p,266b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,7n,21p,266b,277s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (14 pages, 21220 bytes).
+Output written on main.dvi (14 pages, 23652 bytes).
