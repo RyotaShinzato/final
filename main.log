@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2014) (preloaded format=platex 2015.2.9)  9 FEB 2015 19:46
+This is e-pTeX, Version 3.14159265-p3.5-130605-2.6 (utf8.euc) (TeX Live 2014) (preloaded format=platex 2015.2.9)  10 FEB 2015 02:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -47,10 +47,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: dvipdfmx.def on input line 91.
 
-(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/dvips.def
-File: dvips.def 2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/dvipdfmx-def/dvipdfmx.def
+File: dvipdfmx.def 2014/04/28 v4.01 LaTeX color/graphics driver for dvipdfmx (T
+eX Live/ChoF)
 ))
 \Gin@req@height=\dimen121
 \Gin@req@width=\dimen122
@@ -67,6 +68,10 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box41
 \@float@everytoks=\toks17
 \@floatcapt=\box42
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 ) (./main.aux
 
 LaTeX Warning: Label `chap:poordirection' multiply defined.
@@ -74,30 +79,30 @@ LaTeX Warning: Label `chap:poordirection' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-File: fig/ryukyu.pdf Graphic file (type eps)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+File: fig/ryukyu.pdf Graphic file (type pdf)
  <fig/ryukyu.pdf> [0
 
 ]
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <24.88> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 33.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <24.88> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 33.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 34.
  (./main.toc
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 1.
@@ -138,37 +143,43 @@ LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <17.28> not available
 
 ]
 第 2 章
-)
-Overfull \hbox (46.954pt too wide) in paragraph at lines 10--46
+
+Overfull \hbox (46.954pt too wide) in paragraph at lines 10--13
 \JY1/mc/m/n/12 提供している\OT1/cmr/m/n/12 . An-droid,iOS,OS X,Linux,Windows7 \
 JY1/mc/m/n/12 など様 々 な \OT1/cmr/m/n/12 OS \JY1/mc/m/n/12 に対応し\OT1/cmr/m
 /n/12 ,Java,C++,C,JavaScript
  []
 
-(./chapter3.tex [2
-
-]
-第 3 章
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
-) (./chapter4.tex
-[3
+File: fig/AllJoyn.pdf Graphic file (type pdf)
+
+<fig/AllJoyn.pdf>
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
+ [2
+
+] [3]) (./chapter3.tex [4] [5]
+第 3 章
+) (./chapter4.tex [6
 
 ]
 第 4 章
-) (./future.tex [4
+) (./future.tex [7
 
 ]
 第 5 章
-) (./bibliography.tex [5
+) (./bibliography.tex [8
 
-]) (./thanks.tex [6
+]) (./thanks.tex [9
 
-]) [7
+]) [10
 
 ] (./main.aux)
 
@@ -176,12 +187,12 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 770 strings out of 493807
- 9465 string characters out of 6151952
- 67107 words of memory out of 5000000
- 4241 multiletter control sequences out of 15000+600000
- 14180 words of font info for 55 fonts, out of 8000000 for 9000
+ 879 strings out of 493807
+ 10924 string characters out of 6151952
+ 69424 words of memory out of 5000000
+ 4342 multiletter control sequences out of 15000+600000
+ 15882 words of font info for 62 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 25i,4n,21p,266b,216s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 25i,7n,21p,266b,289s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (11 pages, 14856 bytes).
+Output written on main.dvi (14 pages, 21220 bytes).
