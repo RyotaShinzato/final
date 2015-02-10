@@ -2,7 +2,7 @@
 \label{chap:concept}
 
 \section{アドホックネットワーク}
-アドホックネットワークとは,アクセスポイントを必要としない無線で接続できる端末のみで構成されたネットワークである.
+アドホックネットワーク\cite{アドホック}とは,アクセスポイントを必要としない無線で接続できる端末のみで構成されたネットワークである.
 直接電波が届き通信可能である場合には,始点ノードから終点ノードへ1ホップでパケット伝達が行われる.電波が直接届かない場合にはノードを経由(マルチホップ)することで終点ノードまでパケットを伝達する.
 端末の中継機能を利用してネットワークを構成しているので,アドホックネットワークには基地局インフラが不要である.
 そのため、限られた領域内の簡易なネットワークの構築の手段として有効である.
@@ -16,7 +16,7 @@
 \end{figure}
 
 \section{AllJoyn}
-AllJoynはQualcommが開発したオープンソースプロジェクトである.デバイス間通信を実現し,製品やアプリケーション間の相互運用を可能にするデバイス通信フレームワークを提供している.
+AllJoyn\cite{allseen}\cite{スライド}はQualcommが開発したオープンソースプロジェクトである.デバイス間通信を実現し,製品やアプリケーション間の相互運用を可能にするデバイス通信フレームワークを提供している.
 Android,iOS,OS X,Linux,Windows7など様々なOSに対応し,Java,C++,C,JavaScriptなどの言語で使用できる.
 AllJoynは近傍デバイスの探索やP2Pネットワークへの接続,セキュリティなどの要素を提供しており,機器やOSに依存せず開発することができる.
 
@@ -79,19 +79,21 @@ AllJoyn App CodeはAllJoynアプリケーションのロジックである.
 
 
 \section{Bluetooth Low Energy}
-近距離無線通信技術Bluetoothの拡張仕様の1つであり,Bluetooth4.0規格の一部として採用された.
+Bluetooth Low Energy(BLE)\cite{BLE1}\cite{BLE2}近距離無線通信技術Bluetoothの拡張仕様の1つであり,Bluetooth4.0規格の一部として採用された.
 一般的なBluetoohと同様に2.4GHz帯を使用し,データ転送速度は1Mbpsである.
 非常に少ない消費電力で動作することができ,ボタン電池で数年動作すると言われている.
 
 \section{iBeacon}
-iBeacon\cite{iBeacon}は,2013年にAppleが発表したBluetooth Low Energy(BLE)を利用した技術であり,発信機から発せられるビーコンを受信し,発信機の位置を特定・確認できる.
+iBeacon\cite{iBeacon}\cite{iBeaconを使用してみよう}は,2013年にAppleが発表したBluetooth Low Energy(BLE)を利用した技術であり,発信機から発せられるビーコンを受信し,発信機の位置を特定・確認できる.
 iOS7以降のデバイス(iPhone,iPad,およびiPod touch)やAndroid4.3以降のデバイスなどで受信することができる.
 iBeaconでは領域の出入りをチェックするリージョン監視やビーコンの情報を受信するレーシングを用いて位置や近接具合などを検知する.
 ビーコンを受信したときに得られる情報には以下の6つがある.
 
 
-\begin{center}
+\begin{comment}%コメントアウト
+
 \begin{table}[htb]
+\centering
 \begin{tabular}{|l|l|}  \hline
 proximityUUID & 識別子 \\ \hline
 major & 識別子 \\  \hline
@@ -101,7 +103,8 @@ accuracy & 距離の精度 \\ \hline
 rssi & 受信強度 \\ \hline
 \end{tabular}
 \end{table}
-\end{center}
+
+\end{comment}
 
 \begin{itemize}
 \item proximity UUID：ビーコン識別子
@@ -114,8 +117,10 @@ rssi & 受信強度 \\ \hline
 
 また,proximityは正確な距離を表すものではなく,以下の大まかな4つの値で得ることができる.
 
-\begin{center}
+\begin{comment}%コメントアウト
+
 \begin{table}[htb]
+\centering
 \begin{tabular}{|l|l|} \hline
 Unknown & 検出不可 \\ \hline
 Immediate & 至近距離 \\ \hline
@@ -123,7 +128,8 @@ Near & 近距離 \\ \hline
 Far & 遠距離 \\ \hline
 \end{tabular}
 \end{table}
-\end{center}
+
+\end{comment}
 
 \begin{itemize}
 \item Unknown：検出不可
