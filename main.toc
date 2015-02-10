@@ -9,7 +9,8 @@
 \contentsline {subsection}{\numberline {2.2.2}AllJoyn Service Framework Libraries}{4}
 \contentsline {subsection}{\numberline {2.2.3}AllJoyn App Code}{4}
 \contentsline {subsection}{\numberline {2.2.4}AllJoyn Router}{4}
-\contentsline {section}{\numberline {2.3}iBeacon}{4}
+\contentsline {section}{\numberline {2.3}Bluetooth Low Energy}{4}
+\contentsline {section}{\numberline {2.4}iBeacon}{4}
 \contentsline {chapter}{\numberline {第3章}見守りシステム}{6}
 \contentsline {section}{\numberline {3.1}見守りシステムの概要}{6}
 \contentsline {section}{\numberline {3.2}見守りエリアからの逸脱管理}{6}
