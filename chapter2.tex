@@ -3,11 +3,12 @@
 
 \section{アドホックネットワーク}
 アドホックネットワーク\cite{アドホック}とは,アクセスポイントを必要としない無線で接続できる端末のみで構成されたネットワークである.
-直接電波が届き通信可能である場合には,始点ノードから終点ノードへ1ホップでパケット伝達が行われる.電波が直接届かない場合にはノードを経由(マルチホップ)することで終点ノードまでパケットを伝達する.
+直接電波が届き通信可能である場合には,始点端末から終点端末へ1ホップでパケット伝達が行われる.
+電波が直接届かない場合には経由(マルチホップ)することで終点端末までパケットを伝達する.
 端末の中継機能を利用してネットワークを構成しているので,アドホックネットワークには基地局インフラが不要である.
 そのため、限られた領域内の簡易なネットワークの構築の手段として有効である.
 
-以下の図では視点ノードから終点ノードまで直接繋がっていないが,他のノードを経由し4ホップで通信を行っている.
+以下の図では始点端末から終点端末まで直接繋がっていないが,他の端末を経由し4ホップで通信を行っている.
 
 \begin{figure}[htbp]
 \centering
@@ -16,14 +17,24 @@
 \end{figure}
 
 \section{AllJoyn}
-AllJoyn\cite{allseen}\cite{スライド}はQualcommが開発したオープンソースプロジェクトである.デバイス間通信を実現し,製品やアプリケーション間の相互運用を可能にするデバイス通信フレームワークを提供している.
+AllJoyn\cite{allseen}\cite{スライド}はQualcommが開発したオープンソースプロジェクトである.
+端末間通信を実現し,製品やアプリケーション間の相互運用を可能にするデバイス通信フレームワークを提供している.
+QualcommはloT標準化団体であるAllSeenに参加しており,AllSeenが推進するloT規格はAllJoynをベースに設計されている.
+OSI参照モデルのセッション層以上の規格であり,トランスポート層には依存しないというメリットがある.
+そのため,Wi-FiやWi-Fi Direct,Bluetoothといった様々な通信規格を用いて開発することができる.
 Android,iOS,OS X,Linux,Windows7など様々なOSに対応し,Java,C++,C,JavaScriptなどの言語で使用できる.
 AllJoynは近傍デバイスの探索やP2Pネットワークへの接続,セキュリティなどの要素を提供しており,機器やOSに依存せず開発することができる.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{fig/AllJoyn_App.pdf}
+\caption{AllJoynを用いたアプリケーションの例}
+\end{figure}
 
+\subsection{AllJoynアーキテクチャ}
 
 AllJoynネットワークはAllJoynアプリケーションとAllJoynルーターから成る.
-AllJoynアプリケーションはAllJoynルーターを通じて他のAllJoynアプリケーションと通信を行う.
+AllJoynアプリケーションはAllJoynルーターを通じて他のAllJoynアプリケーションやAllJoynルーターと通信を行う.
 AllJoynアプリケーションは以下の要素から成る.
 
 \begin{itemize}
@@ -35,22 +46,27 @@ AllJoynアプリケーションは以下の要素から成る.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=10cm]{fig/AllJoyn.pdf}
-\caption{AllJoynアプリケーションの構成}
+\caption{AllJoynネットワークの構成}
 \end{figure}
 
-\subsection{AllJoyn Core Library}
+\subsubsection{AllJoyn Core Library}
 AllJoyn Core LibraryはAllJoynネットワークと通信するための最低限のAPIを提供する.
 提供するAPIは以下の通りである.
 
 \begin{itemize}
-\item Advertisements
+\item Advertisement
+UDPパケットを用いてAllJoynサービスをブロードキャストする.
 \item Discovery
+AdvertisementされたAllJoynサービスを検索する.
 \item Session creation
+セッションの確立
 \item Interface definition of methods, properties, and signals
+メソッド,プロパティ,シグナルのインターフェース定義
 \item Object creation and handling
+オブジェクトの生成とハンドリング
 \end{itemize}
 
-\subsection{AllJoyn Service Framework Libraries}
+\subsubsection{AllJoyn Service Framework Libraries}
 AllJoyn Service Framework Librariesは,onboarding,notificatino,control panelなどのサービスを備えている.
 Base Servicesとして以下の機能がある.
 
@@ -60,22 +76,25 @@ Base Servicesとして以下の機能がある.
 \item Onbording \\
 Wi-Fiネットワークへの接続をサポート
 \item Configuration \\
-デバイスの構成
+端末の構成
 \item Notificatinos \\
 デバイスからの通知
 \item Control Panel \\
-UI widgetとリモートデバイスとの通信
+UI widgetとリモート端末との通信
 \end{itemize}
 \end{itemize}
 
-AllJoyn Service Framework Librariesを使うことで,アプリケーションやデバイスは互いにこれらのサービスを運用することができる.
+AllJoyn Service Framework Librariesを使うことで,アプリケーションや端末は互いにこれらのサービスを運用することができる.
 
 
-\subsection{AllJoyn App Code}
+\subsubsection{AllJoyn App Code}
 AllJoyn App CodeはAllJoynアプリケーションのロジックである.
-高レベルの機能を提供するAllJoyn Service Frameworksか直接AllJoyn Core APIにアクセスできるAllJoyn Core Libraryのどちらかを用いてプログラミングされる.
+高レベルの機能を提供するAllJoyn Service Frameworksか,直接AllJoyn Core APIにアクセスできるAllJoyn Core Libraryのどちらかを用いてプログラミングされる.
 
-\subsection{AllJoyn Router}
+\subsubsection{AllJoyn Router}
+AllJoyn RouterはP2P Advertisement/Discovery,Connection ManagementといったAllJoynシステムの核となる機能を提供する.
+メッセージはAllJoyn Routerを経由して他のアプリケーションに送信される.
+
 
 
 \section{Bluetooth Low Energy}
@@ -85,7 +104,7 @@ Bluetooth Low Energy(BLE)\cite{BLE1}\cite{BLE2}近距離無線通信技術Blueto
 
 \section{iBeacon}
 iBeacon\cite{iBeacon}\cite{iBeaconを使用してみよう}は,2013年にAppleが発表したBluetooth Low Energy(BLE)を利用した技術であり,発信機から発せられるビーコンを受信し,発信機の位置を特定・確認できる.
-iOS7以降のデバイス(iPhone,iPad,およびiPod touch)やAndroid4.3以降のデバイスなどで受信することができる.
+iOS7以降の端末(iPhone,iPad,およびiPod touch)やAndroid4.3以降の端末などで受信することができる.
 iBeaconでは領域の出入りをチェックするリージョン監視やビーコンの情報を受信するレーシングを用いて位置や近接具合などを検知する.
 ビーコンを受信したときに得られる情報には以下の6つがある.
 

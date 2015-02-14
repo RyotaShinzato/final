@@ -5,19 +5,26 @@
 \contentsline {chapter}{\numberline {第2章}基礎概念}{3}
 \contentsline {section}{\numberline {2.1}アドホックネットワーク}{3}
 \contentsline {section}{\numberline {2.2}AllJoyn}{3}
-\contentsline {subsection}{\numberline {2.2.1}AllJoyn Core Library}{4}
-\contentsline {subsection}{\numberline {2.2.2}AllJoyn Service Framework Libraries}{5}
-\contentsline {subsection}{\numberline {2.2.3}AllJoyn App Code}{5}
-\contentsline {subsection}{\numberline {2.2.4}AllJoyn Router}{5}
-\contentsline {section}{\numberline {2.3}Bluetooth Low Energy}{5}
+\contentsline {subsection}{\numberline {2.2.1}AllJoynアーキテクチャ}{4}
+\contentsline {subsubsection}{AllJoyn Core Library}{4}
+\contentsline {subsubsection}{AllJoyn Service Framework Libraries}{5}
+\contentsline {subsubsection}{AllJoyn App Code}{6}
+\contentsline {subsubsection}{AllJoyn Router}{6}
+\contentsline {section}{\numberline {2.3}Bluetooth Low Energy}{6}
 \contentsline {section}{\numberline {2.4}iBeacon}{6}
-\contentsline {chapter}{\numberline {第3章}電子見守りシステム}{7}
-\contentsline {section}{\numberline {3.1}電子見守りシステムの概要}{7}
-\contentsline {section}{\numberline {3.2}見守りエリアからの逸脱管理}{7}
+\contentsline {chapter}{\numberline {第3章}電子見守りシステム}{8}
+\contentsline {section}{\numberline {3.1}電子見守りシステムの概要}{8}
+\contentsline {section}{\numberline {3.2}見守りエリアからの逸脱管理}{8}
 \contentsline {section}{\numberline {3.3}ビーコン情報の共有}{8}
-\contentsline {chapter}{\numberline {第4章}実験}{9}
-\contentsline {section}{\numberline {4.1}AllJoynの実装}{9}
-\contentsline {section}{\numberline {4.2}ビーコン情報の共有}{9}
-\contentsline {section}{\numberline {4.3}検証実験}{9}
-\contentsline {section}{\numberline {4.4}考察}{9}
-\contentsline {chapter}{\numberline {第5章}今後の課題}{10}
+\contentsline {chapter}{\numberline {第4章}設計と実装}{10}
+\contentsline {section}{\numberline {4.1}提案手法}{10}
+\contentsline {section}{\numberline {4.2}開発環境}{10}
+\contentsline {section}{\numberline {4.3}AllJoynAppの概要}{11}
+\contentsline {section}{\numberline {4.4}設計}{11}
+\contentsline {subsection}{\numberline {4.4.1}AllJoynセッション}{11}
+\contentsline {subsection}{\numberline {4.4.2}プログラムファイル}{12}
+\contentsline {subsection}{\numberline {4.4.3}アプリケーションの起動}{13}
+\contentsline {subsection}{\numberline {4.4.4}FINDボタン押下}{13}
+\contentsline {subsection}{\numberline {4.4.5}SCANボタン押下}{15}
+\contentsline {section}{\numberline {4.5}考察}{15}
+\contentsline {chapter}{\numberline {第5章}今後の課題}{16}

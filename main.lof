@@ -1,9 +1,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces アドホックネットワークの例}}{3}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces AllJoynアプリケーションの構成}}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces AllJoynを用いたアプリケーションの例}}{4}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces AllJoynネットワークの構成}}{5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces 見守りエリアからの逸脱管理}}{7}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有}}{8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces 見守りエリアからの逸脱管理}}{9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有}}{9}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AllJoynセッションの例}}{11}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces AllJoynClientクラス図}}{12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces AllJoynServiceクラス図}}{12}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces ユースケース図}}{13}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces アプリケーション起動画面}}{13}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces アプリケーション起動画面}}{14}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces FINDボタン押下}}{14}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces SCANボタン押下}}{15}
 \addvspace {10\p@ }
