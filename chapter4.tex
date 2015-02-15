@@ -3,9 +3,9 @@
 
 \section{提案手法}
 本研究では,P2P型端末通信フレームワークであるAllJoynを用いて端末間のビーコン情報共有を行う.
-具体的には,端末Aで周囲のビーコンを検知し,端末BにビーコンのUUID,RSSI,タイムスタンプなどの情報を送信する.
+具体的には,端末Aで周囲のビーコンを検知し,端末BにビーコンのUUID,RSSIなどの情報を送信する.
 また,自身で検知したビーコンの情報と,他端末から送信されたビーコンの情報を保持する.
-今回の設計では,同一アクセスポイント内に複数の端末があることを想定している.
+今回の設計では,同一アクセスポイント内に全ての端末があることを想定している.
 
 \section{開発環境}
 本研究では,対象OSをAndroidとし,Android OSで動作するアプリケーションを作成する.
@@ -63,7 +63,7 @@ AllJoynServiceはバックグラウンドで動作するプログラムであり
 
 
 \subsection{AllJoynセッション}
-今回設計したAllJoynセッションの流れは以下の通りである.
+今回設計したAllJoynAppのセッションの流れは以下の通りである.
 
 \begin{figure}[htbp]
 \centering
@@ -81,6 +81,32 @@ AllJoynServiceはバックグラウンドで動作するプログラムであり
 \end{enumerate}
 
 
+\subsection{iBeaconの検知}
+iBeaconはiOS特有の機能であるが,Bluetooth Low Energy(BLE)を利用した技術であるため,BLEを受信することができるAndroid4.3以上かつBluetooth4.0に対応した端末ならiBeaconを検知することができる.
+iBeaconがブロードキャストしているバイトデータは6$\sim$9バイト目が固定されており,この値を参照してiBeaconかどうかを判断する.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|c|c|} \hline
+    データ領域 & 説明 \\ \hline \hline
+    1   & 1ブロック目のバイト数 \\ \hline
+    2,3 & フラグ \\ \hline
+    4   & 2ブロック目のバイト数 \\ \hline
+    5   & メーカー固有のAD typeデータ \\ \hline
+    6,7 & 会社コード(Appleのコードは0x004C) \\ \hline
+    8   & データタイプ(iBeaconは0x02) \\ \hline
+    9   & 連なるiBeaconデータのバイト数 \\ \hline
+    10 $\sim$ 25 & UUID \\ \hline
+    26,27 & major \\ \hline
+    28,29 & minor \\ \hline
+    30  & 電波強度を求めるための2の補数 \\ \hline
+  \end{tabular}
+  \caption{iBeaconデータ配列}
+\end{table}
+
+Androidアプリ内でバイトデータを処理し,UUIDやRSSIといったビーコン情報を抽出する.
+
+
 \subsection{プログラムファイル}
 AllJoynAppは,
 \begin{itemize}
@@ -92,18 +118,17 @@ AllJoynAppは,
 
 
 \begin{figure}[htbp]
-\begin{minipage}{0.5 \hsize}
 \begin{center}
 \includegraphics[width=10cm]{fig/class_client.pdf}
 \end{center}
 \caption{AllJoynClientクラス図}
-\end{minipage}
-\begin{minipage}{0.5 \hsize}
+\end{figure}
+
+\begin{figure}
 \begin{center}
 \includegraphics[width=10cm]{fig/class_service.pdf}
 \end{center}
 \caption{AllJoynServiceクラス図}
-\end{minipage}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -112,10 +137,25 @@ AllJoynAppは,
 \caption{ユースケース図}
 \end{figure}
 
+\section{実装}
+今回作成したAllJoynAppの処理を解説する.
+操作の手順としては
+\begin{enumerate}
+\item アプリケーションの起動
+\item FINDボタン押下
+\item SCANボタン押下
+\end{enumerate}
+となっている.
+
 \subsection{アプリケーションの起動}
-今回作成したAllJoynAppを起動すると,AllJoynClientとAllJoynServiceの二つが起動する.
-AllJoynClientは画面上にFIND,SCANという二つのボタンを表示する.
-AllJoynServiceはAllJoyn Routerと接続し,周囲のAllJoyn RouterにAdvertiseする.
+アプリケーションを起動した際の処理は以下の通りである.
+
+\begin{enumerate}
+\item AllJoynClientを起動する.
+\item AllJoynClientはAllJoynServiceを起動する.AllJoynServiceはバックグラウンドで動作する.
+\item 画面上にFIND,SCANという二つのボタンを表示する.
+\item AllJoynServiceはAllJoyn Routerと接続し,Advertiseする.
+\end{enumerate}
 
 \begin{figure}[htbp]
 \centering
@@ -123,11 +163,14 @@ AllJoynServiceはAllJoyn Routerと接続し,周囲のAllJoyn RouterにAdvertise�
 \caption{アプリケーション起動画面}
 \end{figure}
 
+以下の図は,端末A,端末BでAllJoynAppを起動した様子を表している.
+
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=10cm]{fig/appstart.pdf}
 \caption{アプリケーション起動画面}
 \end{figure}
+
 
 
 \subsection{FINDボタン押下}
@@ -147,14 +190,27 @@ FINDボタンを押下した際の処理は以下の通りである.
 \caption{FINDボタン押下}
 \end{figure}
 
+以下の図では,端末AでFINDボタンを押下した際の様子を表している.
+端末AではAllJoynServiceが停止し,端末AのAllJoynClientは端末BのAllJoynServiceとコネクションを確立させる.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{fig/click_find.pdf}
+\caption{FINDボタン押下}
+\end{figure}
+
+\newpage
+
 \subsection{SCANボタン押下}
 SCANボタンが押下された際の処理は以下の通りである.
 \begin{enumerate}
-\item 二秒間周囲のビーコンを検知し,ビーコン情報を画面上に表示する.
-\item AllJoynClientから,自身と接続されているAllJoynServiceにビーコン情報を送信する.
-\item AllJoynServiceは受信したビーコン情報を画面上に表示する.
+\item 二秒間周囲のiBeaconを検知し,ビーコン情報を画面上に表示する.iBeaconを検知しなかった場合,画面上に'iBeacon not found'と表示する.
+\item AllJoynClientから,接続しているAllJoynServiceにビーコン情報を送信する.
+\item ビーコン情報を受信したAllJoynServiceは,自身のAllJoynClientにビーコン情報を送信する.
+\item AllJoynClientは,受信したビーコン情報を画面上に表示する.
 \item 自身のAllJoynServiceを起動する.
 \end{enumerate}
+
 
 \begin{figure}[htbp]
 \centering
@@ -162,5 +218,71 @@ SCANボタンが押下された際の処理は以下の通りである.
 \caption{SCANボタン押下}
 \end{figure}
 
+以下の図は端末AでSCANボタンを押下した際の様子を表している.
+端末AのAllJoynClientでビーコンを検知し,端末BのAllJoynServiceにビーコン情報を送信する.端末BのAllJoynServiceは自身のAllJoynClientにビーコン情報を送信し,画面上に表示する.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=10cm]{fig/click_scan.pdf}
+\caption{SCANボタン押下}
+\end{figure}
+
+\newpage
+
+\section{検証}
+今回設計・実装を行ったAllJoynAppの検証を行う.
+検証する項目は以下の通りである.
+
+\begin{description}
+\item[項目1] 端末でiBeaconを検知し,他端末にビーコン情報を送信できる.
+\item[項目2] 端末でiBeaconの離脱を検知し,他端末に離脱を通知する.
+\item[項目3] 複数のiBeacon存在下でも検知し,それぞれのビーコン情報を他端末に送信できる.
+\end{description}
+
+これらの項目の検証を,琉球大学工学部棟一号館607教室にて行った.
+使用した機材は,AllJoynAppの検証機器としてARROWS NX F-05F(以下端末A)TORQUE G01(以下端末B),ビーコン発信機としてiOS端末であるiPhone5S二台iPhone6一台(以下発信機)の計三台を用いた.
+
+
+\begin{itemize}
+\item 項目1 \\
+項目1の検証手順は以下の通りである.
+\begin{enumerate}
+\item 端末A及び端末Bを無線アクセスポイント'ie-ryukyu'に接続する.
+\item 端末A及び端末BでAllJoynAppを起動する.
+\item 発信機一台を起動する.
+\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認しSCANボタンを押下する.
+\end{enumerate}
+
+端末Aで取得したビーコン情報が端末Bの画面上に表示された.(画像は後で撮って貼ります.)
+
+
+\item 項目2 \\
+項目2の検証は項目1の手順に以下の手順を加える.
+\begin{enumerate}
+\item 発信機を停止させる.
+\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認し,SCANボタンを押下する.
+\end{enumerate}
+
+端末A及びBの画面上に'iBeacon not found'と表示され,iBeaconの離脱を検知し,他端末に通知することができた.
+
+\item 項目3 \\
+項目3の検証は項目1の手順に以下の手順を加える.
+\begin{enumerate}
+\item 発信機3台起動させる.
+\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認し,SCANボタンを押下する.
+\end{enumerate}
+
+端末A及びBの画面上にiBeacon三台分のビーコン情報が表示された.
+
+\end{itemize}
+
 
 \section{考察}
+今回の設計・実装で,Android端末でiBeaconを検知し,ビーコン情報を他端末に送信し,ビーコン情報を共有することができた.
+機材の関係上,端末2台,iBeacon発信機3台までしか検証できなかったが,この検証で一般家庭や小規模の介護施設などでの見守りできることが示された.
+また,アクセスポイントを経由して通信を行っているので同一アクセスポイント内なら距離を選ばず通信することができる.
+
+FINDボタンを押下してSCANボタンを押下するまで自身のAllJoynServiceを停止しているため,その間はビーコン情報の受信が出来なくなってしまうという問題点がある.
+また,今回の実装は端末が同一アクセスポイント内にあるという想定で行ったため,屋外での見守りには対応していない.そのため,現状では見守り可能な環境が限定されている.
+
+「検知出来なくなったiBeaconはどれか」といった表示をしていないため,現状では大規模の見守りには不向きであるといえる.
