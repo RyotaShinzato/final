@@ -2,19 +2,23 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces アドホックネットワークの例}}{3}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces AllJoynを用いたアプリケーションの例}}{4}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces AllJoynネットワークの構成}}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces AllJoynアーキテクチャの構成}}{5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces 見守りエリアからの逸脱管理}}{9}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有}}{9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有}}{10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces AllJoynセッションの例}}{11}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces AllJoynClientクラス図}}{13}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces AllJoynServiceクラス図}}{13}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces ユースケース図}}{14}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces アプリケーション起動画面}}{15}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces アプリケーション起動画面}}{15}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces FINDボタン押下}}{16}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces FINDボタン押下}}{17}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces SCANボタン押下}}{18}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces SCANボタン押下}}{18}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AllJoynセッションの例}}{12}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces AllJoynClientクラス図}}{14}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces AllJoynServiceクラス図}}{14}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces ユースケース図}}{15}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces アプリケーション起動画面}}{16}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces アプリケーション起動画面}}{16}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces FINDボタン押下}}{17}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces FINDボタン押下}}{18}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces SCANボタン押下}}{19}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces SCANボタン押下}}{19}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces 項目1}}{21}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces 項目2}}{21}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces 項目3}}{22}
 \addvspace {10\p@ }

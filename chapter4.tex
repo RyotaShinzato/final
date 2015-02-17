@@ -56,7 +56,7 @@ Wi-Fi & IEEE802.11a/b/g/n/ac \\ \hline
 iBeaconから発せられるビーコンを受信し,AllJoynを用いてビーコン情報を送受信するAndroidアプリであるAllJoynAppを作成する.
 
 
-\section{設計}
+\subsection{設計}
 今回作成するAllJoynAppには,ビーコンを検知し,AllJoynを用いてビーコン情報を送信するAllJoynClientと,ビーコン情報を受信するAllJoynService,インターフェースを記述したSimpleInterfaceという三つのプログラムがある.
 AllJoynServiceはバックグラウンドで動作するプログラムであり,AllJoynClientから呼び出されて起動する.
 更に,FINDボタンとSCANボタン,ListViewといったUI部品がある.
@@ -99,12 +99,12 @@ iBeaconがブロードキャストしているバイトデータは6$\sim$9バ�
     10 $\sim$ 25 & UUID \\ \hline
     26,27 & major \\ \hline
     28,29 & minor \\ \hline
-    30  & 電波強度を求めるための2の補数 \\ \hline
+    30  & 受信強度を求めるための2の補数 \\ \hline
   \end{tabular}
   \caption{iBeaconデータ配列}
 \end{table}
 
-Androidアプリ内でバイトデータを処理し,UUIDやRSSIといったビーコン情報を抽出する.
+Androidアプリ内でバイトデータを処理し,UUIDやrssiといったビーコン情報を抽出する.
 
 
 \subsection{プログラムファイル}
@@ -164,6 +164,7 @@ AllJoynAppは,
 \end{figure}
 
 以下の図は,端末A,端末BでAllJoynAppを起動した様子を表している.
+端末A及び端末Bでは,AllJoynServiceが起動し,周囲にAdvertisementしている.
 
 \begin{figure}[htbp]
 \centering
@@ -183,6 +184,8 @@ FINDボタンを押下した際の処理は以下の通りである.
 \item 検索している間,画面上には'DISCOVERING'と表示される
 \item AllJoynServiceを検知した場合,コネクションを確立し,'DISCOVERING'の表示をやめる.
 \end{enumerate}
+
+同端末内でAllJoynClientとAllJoynServiceが起動している際,AllJoynClientは自身のAllJoynServiceと優先的に接続するため,Discoveryする前に自身のAllJoynServiceを停止させて周囲のAllJoynServiceをDiscoveryする.
 
 \begin{figure}[htbp]
 \centering
@@ -227,62 +230,6 @@ SCANボタンが押下された際の処理は以下の通りである.
 \caption{SCANボタン押下}
 \end{figure}
 
-\newpage
-
-\section{検証}
-今回設計・実装を行ったAllJoynAppの検証を行う.
-検証する項目は以下の通りである.
-
-\begin{description}
-\item[項目1] 端末でiBeaconを検知し,他端末にビーコン情報を送信できる.
-\item[項目2] 端末でiBeaconの離脱を検知し,他端末に離脱を通知する.
-\item[項目3] 複数のiBeacon存在下でも検知し,それぞれのビーコン情報を他端末に送信できる.
-\end{description}
-
-これらの項目の検証を,琉球大学工学部棟一号館607教室にて行った.
-使用した機材は,AllJoynAppの検証機器としてARROWS NX F-05F(以下端末A)TORQUE G01(以下端末B),ビーコン発信機としてiOS端末であるiPhone5S二台iPhone6一台(以下発信機)の計三台を用いた.
 
 
-\begin{itemize}
-\item 項目1 \\
-項目1の検証手順は以下の通りである.
-\begin{enumerate}
-\item 端末A及び端末Bを無線アクセスポイント'ie-ryukyu'に接続する.
-\item 端末A及び端末BでAllJoynAppを起動する.
-\item 発信機一台を起動する.
-\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認しSCANボタンを押下する.
-\end{enumerate}
 
-端末Aで取得したビーコン情報が端末Bの画面上に表示された.(画像は後で撮って貼ります.)
-
-
-\item 項目2 \\
-項目2の検証は項目1の手順に以下の手順を加える.
-\begin{enumerate}
-\item 発信機を停止させる.
-\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認し,SCANボタンを押下する.
-\end{enumerate}
-
-端末A及びBの画面上に'iBeacon not found'と表示され,iBeaconの離脱を検知し,他端末に通知することができた.
-
-\item 項目3 \\
-項目3の検証は項目1の手順に以下の手順を加える.
-\begin{enumerate}
-\item 発信機3台起動させる.
-\item 端末AでFINDボタンを押下し,'DISCOVERY'の表示が消えたことを確認し,SCANボタンを押下する.
-\end{enumerate}
-
-端末A及びBの画面上にiBeacon三台分のビーコン情報が表示された.
-
-\end{itemize}
-
-
-\section{考察}
-今回の設計・実装で,Android端末でiBeaconを検知し,ビーコン情報を他端末に送信し,ビーコン情報を共有することができた.
-機材の関係上,端末2台,iBeacon発信機3台までしか検証できなかったが,この検証で一般家庭や小規模の介護施設などでの見守りできることが示された.
-また,アクセスポイントを経由して通信を行っているので同一アクセスポイント内なら距離を選ばず通信することができる.
-
-FINDボタンを押下してSCANボタンを押下するまで自身のAllJoynServiceを停止しているため,その間はビーコン情報の受信が出来なくなってしまうという問題点がある.
-また,今回の実装は端末が同一アクセスポイント内にあるという想定で行ったため,屋外での見守りには対応していない.そのため,現状では見守り可能な環境が限定されている.
-
-「検知出来なくなったiBeaconはどれか」といった表示をしていないため,現状では大規模の見守りには不向きであるといえる.
