@@ -5,7 +5,8 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces AllJoynアーキテクチャの構成}}{5}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces 見守りエリアからの逸脱管理}}{9}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有}}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ビーコン情報の共有:逸脱検知}}{10}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces ビーコン情報の共有:逸脱不検知}}{10}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces AllJoynセッションの例}}{12}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces AllJoynClientクラス図}}{14}
